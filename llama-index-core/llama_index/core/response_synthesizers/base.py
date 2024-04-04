@@ -252,13 +252,6 @@ class BaseSynthesizer(ChainableMixin, PromptMixin):
             response = self._prepare_response_output(response_str, source_nodes)
 
             event.on_end(payload={EventPayload.RESPONSE: response})
-
-        dispatch_event(
-            SynthesizeEndEvent(
-                query=query,
-                response=response,
-            )
-        )
         return response
 
     @dispatcher.span
